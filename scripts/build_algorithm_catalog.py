@@ -34,7 +34,7 @@ TRACKS = {
     "shopify_commerce.json": "shopify_commerce",
 }
 
-EXPECTED_TOTAL = 207
+EXPECTED_TOTAL = 331
 
 REQUIRED_FIELDS = ("name", "category", "time", "space", "module", "function")
 
@@ -77,6 +77,34 @@ VIZ_BY_CATEGORY: dict[str, str] = {
     "nudges": "signal",
     "cognitive_load": "signal",
     "motivation": "signal",
+    "sales": "signal",
+    "marketing": "signal",
+    "twitter_x": "signal",
+    "social_growth": "signal",
+    "conversion": "signal",
+    "copywriting": "signal",
+    "learning_acceleration": "signal",
+    "spaced_learning": "signal",
+    "pricing_psychology": "signal",
+    "onboarding": "signal",
+    "retention": "signal",
+    "virality": "signal",
+    "objection_handling": "signal",
+    "dm_outreach": "signal",
+    "ads_psychology": "signal",
+    "b2b_selling": "signal",
+    "saas_growth": "signal",
+    "hook_writing": "signal",
+    "thread_structure": "signal",
+    "engagement_scoring": "signal",
+    "audience_building": "signal",
+    "influencer_fit": "signal",
+    "brand_voice": "signal",
+    "crisis_comms": "signal",
+    "community": "signal",
+    "newsletter": "signal",
+    "landing_pages": "signal",
+    "ecommerce_merch": "signal",
     "shopify_webhooks": "pipeline",
     "shopify_cart": "pipeline",
     "shopify_inventory": "pipeline",
@@ -108,15 +136,39 @@ def load_module(path: Path) -> tuple[str, ast.Module]:
     return _source_cache[path]
 
 
-def extract_function(path: Path, function: str) -> tuple[str, str]:
+def extract_function(path: Path, function: str) -> tuple[str, str, str]:
     text, tree = load_module(path)
     for node in tree.body:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node.name == function:
             source = ast.get_source_segment(text, node) or ""
             doc = ast.get_docstring(node) or ""
             description = doc.split("\n")[0].strip() if doc else ""
-            return description, source
-    return "", ""
+            signature = ""
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                signature = _function_signature(node)
+            return description, source, signature
+    return "", "", ""
+
+
+def _function_signature(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
+    args: list[str] = []
+    defaults_offset = len(node.args.args) - len(node.args.defaults)
+    for index, arg in enumerate(node.args.args):
+        if arg.arg in {"self", "cls"}:
+            continue
+        part = arg.arg
+        if arg.annotation is not None:
+            part += f": {ast.unparse(arg.annotation)}"
+        default_index = index - defaults_offset
+        if default_index >= 0:
+            part += f" = {ast.unparse(node.args.defaults[default_index])}"
+        args.append(part)
+    if node.args.vararg:
+        args.append(f"*{node.args.vararg.arg}")
+    if node.args.kwarg:
+        args.append(f"**{node.args.kwarg.arg}")
+    ret = ast.unparse(node.returns) if node.returns else "None"
+    return f"def {node.name}({', '.join(args)}) -> {ret}"
 
 
 def main() -> int:
@@ -137,7 +189,7 @@ def main() -> int:
             seen_ids.add(slug)
 
             src_path = module_path(track, entry["module"])
-            description, source = extract_function(src_path, entry["function"])
+            description, source, signature = extract_function(src_path, entry["function"])
             if not source:
                 missing_source.append(entry["name"])
 
@@ -148,6 +200,10 @@ def main() -> int:
                     "viz": VIZ_BY_CATEGORY.get(entry["category"], "curve"),
                     "description": description,
                     "source": source,
+                    "signature": signature,
+                    "use_case": entry.get("use_case", ""),
+                    "returns": entry.get("returns", ""),
+                    "example": entry.get("example", ""),
                     **entry,
                 }
             )

@@ -1,11 +1,101 @@
 [
-  {"name": "verify_webhook_hmac", "category": "shopify_webhooks", "time": "O(n)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "verify_webhook_hmac"},
-  {"name": "parse_shopify_gid", "category": "shopify_webhooks", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "parse_shopify_gid"},
-  {"name": "merge_cart_lines", "category": "shopify_cart", "time": "O(n)", "space": "O(n)", "module": "domains.shopify_commerce", "function": "merge_cart_lines"},
-  {"name": "inventory_available", "category": "shopify_inventory", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "inventory_available"},
-  {"name": "shopify_transaction_fee", "category": "shopify_payments", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "shopify_transaction_fee"},
-  {"name": "normalize_metafield_key", "category": "shopify_data", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "normalize_metafield_key"},
-  {"name": "rate_limit_backoff_ms", "category": "shopify_api", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "rate_limit_backoff_ms"},
-  {"name": "storefront_product_url", "category": "shopify_storefront", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "storefront_product_url"},
-  {"name": "order_tags_from_risk", "category": "shopify_orders", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "order_tags_from_risk"}
+  {
+    "name": "verify_webhook_hmac",
+    "category": "shopify_webhooks",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "verify_webhook_hmac",
+    "use_case": "Reject forged webhook payloads before order or inventory handlers run.",
+    "returns": "bool",
+    "example": "ok = verify_webhook_hmac(request.body, request.headers['X-Shopify-Hmac-Sha256'], secret)"
+  },
+  {
+    "name": "parse_shopify_gid",
+    "category": "shopify_webhooks",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "parse_shopify_gid",
+    "use_case": "Normalize GraphQL global IDs from webhooks into REST-style resource lookups.",
+    "returns": "tuple[str, int] | None",
+    "example": "resource, id = parse_shopify_gid('gid://shopify/Product/123')"
+  },
+  {
+    "name": "merge_cart_lines",
+    "category": "shopify_cart",
+    "time": "O(n)",
+    "space": "O(n)",
+    "module": "domains.shopify_commerce",
+    "function": "merge_cart_lines",
+    "use_case": "Deduplicate cart lines before Storefront API cart updates or checkout.",
+    "returns": "list[dict]",
+    "example": "lines = merge_cart_lines([{'variant_id': 1, 'quantity': 2}, {'variant_id': 1, 'quantity': 1}])"
+  },
+  {
+    "name": "inventory_available",
+    "category": "shopify_inventory",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "inventory_available",
+    "use_case": "Compute sellable quantity for buy buttons, ATP checks, and oversell guards.",
+    "returns": "int",
+    "example": "sellable = inventory_available(on_hand=120, committed=35, incoming=10)"
+  },
+  {
+    "name": "shopify_transaction_fee",
+    "category": "shopify_payments",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "shopify_transaction_fee",
+    "use_case": "Estimate Shopify Payments fees in minor units for margin and payout forecasts.",
+    "returns": "int",
+    "example": "fee = shopify_transaction_fee(amount_minor=9999, rate_bps=290, flat_minor=30)"
+  },
+  {
+    "name": "normalize_metafield_key",
+    "category": "shopify_data",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "normalize_metafield_key",
+    "use_case": "Canonicalize metafield namespace.key before Admin API writes.",
+    "returns": "str",
+    "example": "key = normalize_metafield_key('custom', 'Color Name')"
+  },
+  {
+    "name": "rate_limit_backoff_ms",
+    "category": "shopify_api",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "rate_limit_backoff_ms",
+    "use_case": "Backoff schedule when REST or GraphQL returns HTTP 429.",
+    "returns": "int",
+    "example": "time.sleep(rate_limit_backoff_ms(attempt=3) / 1000)"
+  },
+  {
+    "name": "storefront_product_url",
+    "category": "shopify_storefront",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "storefront_product_url",
+    "use_case": "Build canonical product URLs for emails, feeds, and agent tool responses.",
+    "returns": "str",
+    "example": "url = storefront_product_url('demo.myshopify.com', 'merino-hoodie')"
+  },
+  {
+    "name": "order_tags_from_risk",
+    "category": "shopify_orders",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.shopify_commerce",
+    "function": "order_tags_from_risk",
+    "use_case": "Auto-tag high-risk orders for review queues and fulfillment holds.",
+    "returns": "list[str]",
+    "example": "tags = order_tags_from_risk(score=0.82)"
+  }
 ]

@@ -1,46 +1,351 @@
-"""Psychology engineering for agent UX, trust, and ethical persuasion."""
+"""Psychology engineering for agent UX, trust, sales, marketing, and X growth."""
+
+from __future__ import annotations
+
+from agentic_algorithms.psychology.ads_psychology import (
+    ad_claim_compliance_check,
+    ad_frequency_fatigue_score,
+    ad_hook_variants,
+    creative_angle_matrix,
+    retargeting_message_tier,
+    scroll_stop_score,
+)
+
+from agentic_algorithms.psychology.b2b_selling import (
+    economic_buyer_map,
+    expansion_playbook_step,
+    meddic_qualification_score,
+    pilot_success_criteria,
+    procurement_objection_prep,
+    security_review_brief,
+)
 
 from agentic_algorithms.psychology.biases import (
     bias_mitigation_prompt,
     detect_overconfidence_markers,
     detect_sycophancy_markers,
 )
+
 from agentic_algorithms.psychology.cognitive_load import (
     progressive_disclosure_plan,
     readability_score,
 )
+
+from agentic_algorithms.psychology.conversion import (
+    checkout_trust_badges,
+    cta_clarity_score,
+    form_field_reduction_plan,
+    friction_point_score,
+    landing_hero_frame,
+    micro_commitment_step,
+    social_proof_placement,
+    urgency_ethical_score,
+)
+
+from agentic_algorithms.psychology.copywriting import (
+    active_voice_ratio,
+    benefit_vs_feature_ratio,
+    curiosity_gap_line,
+    headline_power_score,
+    power_word_density,
+    rhythm_variation_score,
+    specificity_score,
+)
+
+from agentic_algorithms.psychology.dm_outreach import (
+    cold_dm_opener,
+    conversation_to_call_bridge,
+    dm_opt_out_respect,
+    dm_personalization_hooks,
+    dm_spam_risk_score,
+    warm_dm_followup,
+)
+
 from agentic_algorithms.psychology.framing import (
     gain_frame,
     loss_aversion_frame,
     neutral_frame,
 )
-from agentic_algorithms.psychology.motivation import sdt_tone_score
-from agentic_algorithms.psychology.nudges import (
-    commitment_prompt,
-    default_option_label,
-    social_proof_line,
+
+from agentic_algorithms.psychology.learning import (
+    elaboration_questions,
+    feynman_gap_score,
+    forgetting_curve_reminder,
+    interleaving_schedule,
+    lesson_prerequisite_check,
+    mastery_threshold_check,
+    micro_lesson_chunks,
+    practice_problem_spacing,
+    recall_prompt_generator,
+    skill_stacking_path,
+    spaced_repetition_interval_days,
 )
+
+from agentic_algorithms.psychology.marketing import (
+    brand_promise_check,
+    brand_voice_consistency_score,
+    channel_message_fit,
+    competitor_diff_line,
+    crisis_statement_frame,
+    icp_fit_score,
+    influencer_fit_score,
+    landing_social_proof_block,
+    launch_sequence_plan,
+    newsletter_preview_text,
+    newsletter_subject_score,
+    persona_pain_hook,
+    positioning_statement,
+    value_prop_one_liner,
+)
+
+from agentic_algorithms.psychology.motivation import (
+    sdt_tone_score,
+)
+
+from agentic_algorithms.psychology.nudges import (
+    default_option_label,
+)
+
+from agentic_algorithms.psychology.objection_handling import (
+    authority_objection_response,
+    competitor_objection_matrix,
+    need_objection_probe,
+    price_objection_reframe,
+    timing_objection_response,
+)
+
+from agentic_algorithms.psychology.onboarding import (
+    activation_milestone_map,
+    aha_moment_checklist,
+    empty_state_copy,
+    setup_wizard_steps,
+    time_to_value_score,
+)
+
 from agentic_algorithms.psychology.persuasion import (
     cialdini_principle_score,
     ethical_persuasion_check,
 )
-from agentic_algorithms.psychology.trust import agent_trust_score, transparency_checklist
+
+from agentic_algorithms.psychology.pricing_psychology import (
+    anchoring_tier_order,
+    charm_price,
+    decoy_tier_highlight,
+    payment_friction_score,
+    price_framing_monthly_vs_annual,
+)
+
+from agentic_algorithms.psychology.retention import (
+    churn_risk_score,
+    expansion_upsell_timing,
+    habit_loop_design,
+    renewal_reminder_frame,
+    win_back_subject_line,
+)
+
+from agentic_algorithms.psychology.saas_growth import (
+    freemium_limit_message,
+    nrr_expansion_map,
+    plg_activation_score,
+    seat_expansion_probe,
+    upgrade_trigger_event,
+    usage_based_upsell_line,
+)
+
+from agentic_algorithms.psychology.sales import (
+    champion_enablement_brief,
+    closing_language_check,
+    deal_risk_flags,
+    demo_story_arc,
+    discovery_gap_score,
+    follow_up_timing_days,
+    multi_threading_map,
+    objection_reframe,
+    pipeline_stage_score,
+    spin_question_builder,
+)
+
+from agentic_algorithms.psychology.social_growth import (
+    audience_warmth_score,
+    community_reply_priority,
+    community_welcome_message,
+    content_pillar_balance,
+    creator_collab_fit,
+    cross_post_adaptation,
+    follower_quality_score,
+    growth_loop_map,
+    posting_cadence_plan,
+)
+
+from agentic_algorithms.psychology.trust import (
+    agent_trust_score,
+    transparency_checklist,
+)
+
+from agentic_algorithms.psychology.twitter_x import (
+    bio_link_cta,
+    creator_flywheel_stage,
+    dm_permission_opener,
+    engagement_bait_detector,
+    fomo_tweet_frame,
+    hook_strength_score,
+    quote_tweet_angle,
+    reply_value_score,
+    social_proof_tweet_line,
+    thread_cta_placement,
+    thread_opener_variants,
+    thread_structure_outline,
+    tweet_readability_for_x,
+    viral_loop_score,
+    x_engagement_score,
+)
+
+from agentic_algorithms.psychology.virality import (
+    k_factor_estimate,
+    meme_template_fit,
+    network_effect_pitch,
+    referral_incentive_frame,
+    shareability_score,
+    word_of_mouth_prompt,
+)
 
 __all__ = [
+    "activation_milestone_map",
+    "active_voice_ratio",
+    "ad_claim_compliance_check",
+    "ad_frequency_fatigue_score",
+    "ad_hook_variants",
     "agent_trust_score",
+    "aha_moment_checklist",
+    "anchoring_tier_order",
+    "audience_warmth_score",
+    "authority_objection_response",
+    "benefit_vs_feature_ratio",
     "bias_mitigation_prompt",
+    "bio_link_cta",
+    "brand_promise_check",
+    "brand_voice_consistency_score",
+    "champion_enablement_brief",
+    "channel_message_fit",
+    "charm_price",
+    "checkout_trust_badges",
+    "churn_risk_score",
     "cialdini_principle_score",
-    "commitment_prompt",
+    "closing_language_check",
+    "cold_dm_opener",
+    "community_reply_priority",
+    "community_welcome_message",
+    "competitor_diff_line",
+    "competitor_objection_matrix",
+    "content_pillar_balance",
+    "conversation_to_call_bridge",
+    "creative_angle_matrix",
+    "creator_collab_fit",
+    "creator_flywheel_stage",
+    "crisis_statement_frame",
+    "cross_post_adaptation",
+    "cta_clarity_score",
+    "curiosity_gap_line",
+    "deal_risk_flags",
+    "decoy_tier_highlight",
     "default_option_label",
+    "demo_story_arc",
     "detect_overconfidence_markers",
     "detect_sycophancy_markers",
+    "discovery_gap_score",
+    "dm_opt_out_respect",
+    "dm_permission_opener",
+    "dm_personalization_hooks",
+    "dm_spam_risk_score",
+    "economic_buyer_map",
+    "elaboration_questions",
+    "empty_state_copy",
+    "engagement_bait_detector",
     "ethical_persuasion_check",
+    "expansion_playbook_step",
+    "expansion_upsell_timing",
+    "feynman_gap_score",
+    "follow_up_timing_days",
+    "follower_quality_score",
+    "fomo_tweet_frame",
+    "forgetting_curve_reminder",
+    "form_field_reduction_plan",
+    "freemium_limit_message",
+    "friction_point_score",
     "gain_frame",
+    "growth_loop_map",
+    "habit_loop_design",
+    "headline_power_score",
+    "hook_strength_score",
+    "icp_fit_score",
+    "influencer_fit_score",
+    "interleaving_schedule",
+    "k_factor_estimate",
+    "landing_hero_frame",
+    "landing_social_proof_block",
+    "launch_sequence_plan",
+    "lesson_prerequisite_check",
     "loss_aversion_frame",
+    "mastery_threshold_check",
+    "meddic_qualification_score",
+    "meme_template_fit",
+    "micro_commitment_step",
+    "micro_lesson_chunks",
+    "multi_threading_map",
+    "need_objection_probe",
+    "network_effect_pitch",
     "neutral_frame",
+    "newsletter_preview_text",
+    "newsletter_subject_score",
+    "nrr_expansion_map",
+    "objection_reframe",
+    "payment_friction_score",
+    "persona_pain_hook",
+    "pilot_success_criteria",
+    "pipeline_stage_score",
+    "plg_activation_score",
+    "positioning_statement",
+    "posting_cadence_plan",
+    "power_word_density",
+    "practice_problem_spacing",
+    "price_framing_monthly_vs_annual",
+    "price_objection_reframe",
+    "procurement_objection_prep",
     "progressive_disclosure_plan",
+    "quote_tweet_angle",
     "readability_score",
+    "recall_prompt_generator",
+    "referral_incentive_frame",
+    "renewal_reminder_frame",
+    "reply_value_score",
+    "retargeting_message_tier",
+    "rhythm_variation_score",
+    "scroll_stop_score",
     "sdt_tone_score",
-    "social_proof_line",
+    "seat_expansion_probe",
+    "security_review_brief",
+    "setup_wizard_steps",
+    "shareability_score",
+    "skill_stacking_path",
+    "social_proof_placement",
+    "social_proof_tweet_line",
+    "spaced_repetition_interval_days",
+    "specificity_score",
+    "spin_question_builder",
+    "thread_cta_placement",
+    "thread_opener_variants",
+    "thread_structure_outline",
+    "time_to_value_score",
+    "timing_objection_response",
     "transparency_checklist",
+    "tweet_readability_for_x",
+    "upgrade_trigger_event",
+    "urgency_ethical_score",
+    "usage_based_upsell_line",
+    "value_prop_one_liner",
+    "viral_loop_score",
+    "warm_dm_followup",
+    "win_back_subject_line",
+    "word_of_mouth_prompt",
+    "x_engagement_score",
 ]

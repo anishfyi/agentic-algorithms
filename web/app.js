@@ -12,6 +12,14 @@ const TRACK_LABELS = {
   shopify_commerce: "Shopify Commerce",
 };
 
+const TRACK_BADGE = {
+  shopify_commerce: "Shopify",
+  dsa: "DSA",
+  domain: "Domain",
+  llm: "LLM",
+  psychology: "Psych",
+};
+
 const state = {
   algorithms: [],
   shopifyDocs: [],
@@ -50,6 +58,14 @@ const els = {
   panelPermalink: document.getElementById("panel-permalink"),
   copyImport: document.getElementById("copy-import"),
   copySource: document.getElementById("copy-source"),
+  panelExtra: document.getElementById("panel-extra"),
+  panelUseCaseWrap: document.getElementById("panel-use-case-wrap"),
+  panelUseCase: document.getElementById("panel-use-case"),
+  panelSignatureWrap: document.getElementById("panel-signature-wrap"),
+  panelSignature: document.getElementById("panel-signature"),
+  panelExampleWrap: document.getElementById("panel-example-wrap"),
+  panelExample: document.getElementById("panel-example"),
+  panelSourceLabel: document.getElementById("panel-source-label"),
 };
 
 function allItems() {
@@ -163,29 +179,59 @@ function renderGrid() {
   els.resultCount.textContent = `${visible.length} of ${allItems().length} entries`;
   els.emptyState.hidden = visible.length > 0;
   els.grid.innerHTML = "";
+  els.grid.classList.toggle("grid--shopify", state.track === "shopify_commerce");
 
   visible.forEach((item, i) => {
     const card = document.createElement("button");
     const isDoc = item.kind === "doc";
-    card.className = "card" + (isDoc ? " card-kind-doc" : "");
+    const isShopifyAlgo = item.track === "shopify_commerce" && !isDoc;
+    card.className =
+      "card" +
+      (isDoc ? " card-kind-doc" : "") +
+      (isShopifyAlgo ? " card--shopify-algo" : "") +
+      (isDoc && item.track === "shopify_commerce" ? " card--shopify-doc" : "");
     card.style.animationDelay = `${Math.min(i, 24) * 22}ms`;
-    const badge = isDoc ? "Doc" : TRACK_LABELS[item.track] || item.track;
-    const badgeClass = item.track === "shopify_commerce" && isDoc ? "badge-shopify" : "";
-    card.innerHTML = `
+
+    const badgeLabel = isDoc
+      ? "Docs"
+      : TRACK_BADGE[item.track] || TRACK_LABELS[item.track] || item.track;
+    const badgeClass = item.track === "shopify_commerce" ? "track-badge--shopify" : "";
+
+    let body = `
       <div class="card-top">
-        <span class="track-badge ${badgeClass}">${badge}</span>
+        <span class="track-badge ${badgeClass}">${badgeLabel}</span>
         <span class="card-category">${formatCategory(item.category)}</span>
       </div>
-      <h3 class="card-name">${highlight(item.title || item.name)}</h3>
+      <h3 class="card-name">${highlight(item.title || item.name)}</h3>`;
+
+    if (isShopifyAlgo) {
+      body += `
+      <p class="card-desc card-desc--full">${escapeHtml(item.description || "")}</p>
+      ${item.use_case ? `<p class="card-use-case">${escapeHtml(item.use_case)}</p>` : ""}
+      ${item.signature ? `<pre class="card-signature"><code>${escapeHtml(item.signature)}</code></pre>` : ""}
+      ${item.example ? `<pre class="card-example"><code>${escapeHtml(item.example)}</code></pre>` : ""}
+      <div class="card-meta-row">
+        ${item.returns ? `<span class="card-meta-pill">→ ${escapeHtml(item.returns)}</span>` : ""}
+        <span class="card-meta-pill">${escapeHtml(item.time)}</span>
+        <span class="card-meta-pill">${escapeHtml(item.space)}</span>
+      </div>`;
+    } else if (isDoc) {
+      body += `
+      <p class="card-desc card-desc--full">${escapeHtml(truncate(item.description || item.content || "", 280))}</p>
+      <div class="card-meta-row">
+        <span class="card-meta-pill">${escapeHtml(item.block_type || "section")}</span>
+        ${item.citation?.element_id ? `<span class="card-meta-pill">#${escapeHtml(item.citation.element_id)}</span>` : ""}
+      </div>`;
+    } else {
+      body += `
       <p class="card-desc">${escapeHtml(truncate(item.description || ""))}</p>
-      ${
-        isDoc
-          ? ""
-          : `<div class="card-complexity">
+      <div class="card-complexity">
         <div><span>time</span>${escapeHtml(item.time || "")}</div>
         <div><span>space</span>${escapeHtml(item.space || "")}</div>
-      </div>`
-      }`;
+      </div>`;
+    }
+
+    card.innerHTML = body;
     card.addEventListener("click", () => openPanel(item, true));
     els.grid.appendChild(card);
   });
@@ -228,8 +274,22 @@ function openPanel(item, pushHash) {
   els.panelTime.textContent = item.time || "";
   els.panelSpace.textContent = item.space || "";
   els.panelSource.textContent = isDoc ? item.content || "" : item.source || "# source not found";
+  els.panelSourceLabel.textContent = isDoc ? "Full text" : "Source";
   els.panelImport.textContent = isDoc ? "" : importStatement(item);
   els.panelImport.closest(".panel-usage").style.display = isDoc ? "none" : "block";
+
+  const isShopifyAlgo = item.track === "shopify_commerce" && !isDoc;
+  if (isShopifyAlgo) {
+    els.panelExtra.classList.remove("hidden");
+    els.panelUseCaseWrap.classList.toggle("hidden", !item.use_case);
+    els.panelUseCase.textContent = item.use_case || "";
+    els.panelSignatureWrap.classList.toggle("hidden", !item.signature);
+    els.panelSignature.textContent = item.signature || "";
+    els.panelExampleWrap.classList.toggle("hidden", !item.example);
+    els.panelExample.textContent = item.example || "";
+  } else {
+    els.panelExtra.classList.add("hidden");
+  }
 
   const cite = item.citation;
   if (isDoc && cite?.citation_url) {

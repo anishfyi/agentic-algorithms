@@ -300,27 +300,43 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 12px;
+  flex-wrap: nowrap;
 }
 
 .track-badge {
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 5px 10px;
   border-radius: 999px;
   border: 1px solid var(--glass-border);
   color: var(--text-dim);
   background: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.track-badge--shopify {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.1em;
 }
 
 .card-category {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-faint);
   font-family: var(--font-mono);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .card-name {
@@ -622,6 +638,95 @@ main {
 
 .citation-line a {
   color: var(--text);
+}
+
+.card-desc--full {
+  -webkit-line-clamp: unset;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-use-case {
+  margin: 0 0 10px;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.card-signature,
+.card-example {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.35);
+  overflow-x: auto;
+}
+
+.card-signature code,
+.card-example code {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.card-meta-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.grid--shopify {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+}
+
+.card--shopify-algo,
+.card--shopify-doc {
+  padding: 22px;
+  min-height: 220px;
+}
+
+.card--shopify-algo:hover,
+.card--shopify-doc:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.panel-extra.hidden {
+  display: none;
+}
+
+.detail-section {
+  margin-bottom: 18px;
+}
+
+.detail-section h3 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin: 0 0 8px;
+}
+
+.detail-section p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-dim);
 }
 
 .badge-shopify {
