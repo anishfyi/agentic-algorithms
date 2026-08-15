@@ -3,11 +3,13 @@
 Algorithms, patterns, and reference implementations for building agentic systems **and**
 classic data structures and algorithms with optimal complexity.
 
-Python 3.12+. Two libraries in one package:
+Python 3.12+. **Primary focus: give LLMs every helper they need**, plus psychology engineering for trustworthy agent UX. Also includes agent runtime, DSA, and domain verticals.
 
-1. **Agent runtime** (`Agent`, ReAct, plan-execute, multi-agent, memory, eval, approval hooks)
-2. **DSA catalog** (`agentic_algorithms.dsa`) with **134+ optimal algorithms** indexed in `catalogs/algorithms.json`
-3. **Domain algorithms** (`agentic_algorithms.domains`) for **supply chain, fintech, accounting, expense, e-commerce, search, GEO, and AEO** in `catalogs/domain_algorithms.json`
+1. **LLM helpers** (`agentic_algorithms.llm_helpers`) — prompts, context budgeting, JSON parsing, RAG packing, routing, reflexion/self-consistency (`catalogs/llm_algorithms.json`)
+2. **Psychology engineering** (`agentic_algorithms.psychology`) — biases, framing, persuasion ethics, trust, nudges, cognitive load (`catalogs/psychology_algorithms.json`)
+3. **Agent runtime** (`Agent`, ReAct, plan-execute, multi-agent, memory, eval, approval hooks)
+4. **DSA catalog** (`agentic_algorithms.dsa`) — 134+ optimal algorithms (`catalogs/algorithms.json`)
+5. **Domain algorithms** (`agentic_algorithms.domains`) — supply chain, fintech, accounting, expense, commerce, search, GEO, AEO (`catalogs/domain_algorithms.json`)
 
 Complements [first-principles](https://github.com/anishfyi/first-principles): theory and citations there, runnable code here.
 
@@ -16,6 +18,38 @@ Complements [first-principles](https://github.com/anishfyi/first-principles): th
 ```bash
 pip install agentic-algorithms
 pip install "agentic-algorithms[all]"  # Anthropic + OpenAI providers
+```
+
+## LLM helpers quick start
+
+```python
+from agentic_algorithms.llm_helpers import (
+    few_shot_prompt,
+    chain_of_thought_wrap,
+    prune_messages_by_token_budget,
+    pack_rag_context,
+    parse_structured_output,
+    route_model_by_complexity,
+)
+
+prompt = chain_of_thought_wrap("Reconcile these two ledger balances")
+model = route_model_by_complexity(prompt)  # simple vs complex routing
+```
+
+## Psychology engineering quick start
+
+```python
+from agentic_algorithms.psychology import (
+    detect_overconfidence_markers,
+    bias_mitigation_prompt,
+    ethical_persuasion_check,
+    agent_trust_score,
+    neutral_frame,
+)
+
+copy = neutral_frame("approve this journal entry", "debits equal credits")
+assert not ethical_persuasion_check(copy, domain="fintech")
+system = bias_mitigation_prompt(detect_overconfidence_markers(agent_reply))
 ```
 
 ## Agent quick start
@@ -110,6 +144,7 @@ Domain index: [`catalogs/domain_algorithms.json`](catalogs/domain_algorithms.jso
 
 ```bash
 python examples/fintech_workflow.py
+python examples/llm_psychology_agent.py
 ```
 
 ## Development

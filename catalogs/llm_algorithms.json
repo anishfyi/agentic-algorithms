@@ -1,0 +1,18 @@
+[
+  {"name": "few_shot_prompt", "category": "prompts", "time": "O(examples)", "space": "O(output)", "module": "llm_helpers.prompts", "function": "few_shot_prompt"},
+  {"name": "chain_of_thought_wrap", "category": "prompts", "time": "O(1)", "space": "O(1)", "module": "llm_helpers.prompts", "function": "chain_of_thought_wrap"},
+  {"name": "system_prompt_compose", "category": "prompts", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.prompts", "function": "system_prompt_compose"},
+  {"name": "reflexion_retry_prompt", "category": "prompts", "time": "O(1)", "space": "O(1)", "module": "llm_helpers.prompts", "function": "reflexion_retry_prompt"},
+  {"name": "prune_messages_by_token_budget", "category": "context", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.context", "function": "prune_messages_by_token_budget"},
+  {"name": "sliding_window_messages", "category": "context", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.context", "function": "sliding_window_messages"},
+  {"name": "extract_json_block", "category": "parsing", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.parsing", "function": "extract_json_block"},
+  {"name": "repair_json", "category": "parsing", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.parsing", "function": "repair_json"},
+  {"name": "parse_structured_output", "category": "parsing", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.parsing", "function": "parse_structured_output"},
+  {"name": "chunk_text", "category": "rag", "time": "O(n)", "space": "O(chunks)", "module": "llm_helpers.rag", "function": "chunk_text"},
+  {"name": "pack_rag_context", "category": "rag", "time": "O(chunks)", "space": "O(output)", "module": "llm_helpers.rag", "function": "pack_rag_context"},
+  {"name": "estimate_tokens", "category": "tokens", "time": "O(n)", "space": "O(1)", "module": "llm_helpers.tokens", "function": "estimate_tokens"},
+  {"name": "estimate_cost_usd", "category": "tokens", "time": "O(1)", "space": "O(1)", "module": "llm_helpers.tokens", "function": "estimate_cost_usd"},
+  {"name": "route_model_by_complexity", "category": "routing", "time": "O(n)", "space": "O(1)", "module": "llm_helpers.routing", "function": "route_model_by_complexity"},
+  {"name": "self_consistency_vote", "category": "loops", "time": "O(n)", "space": "O(n)", "module": "llm_helpers.routing", "function": "self_consistency_vote"},
+  {"name": "reflexion_critique_prompt", "category": "loops", "time": "O(1)", "space": "O(1)", "module": "llm_helpers.routing", "function": "reflexion_critique_prompt"}
+]

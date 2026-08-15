@@ -120,11 +120,11 @@ def amortization_schedule(
             balance -= principal_part
         return schedule
     payment = round(
-            principal_minor
-            * monthly_rate
-            * (1 + monthly_rate) ** months
-            / ((1 + monthly_rate) ** months - 1)
-        )
+        principal_minor
+        * monthly_rate
+        * (1 + monthly_rate) ** months
+        / ((1 + monthly_rate) ** months - 1)
+    )
     balance = principal_minor
     schedule = []
     for month in range(1, months + 1):

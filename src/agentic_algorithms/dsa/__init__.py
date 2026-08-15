@@ -160,7 +160,7 @@ from agentic_algorithms.dsa.trie import Trie, TrieNode, word_search_ii
 from agentic_algorithms.dsa.union_find import UnionFind
 
 __all__ = [
-  # arrays
+    # arrays
     "container_with_most_water",
     "dutch_flag_sort",
     "find_duplicate_floyd",

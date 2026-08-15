@@ -1,0 +1,16 @@
+[
+  {"name": "detect_overconfidence_markers", "category": "biases", "time": "O(n)", "space": "O(1)", "module": "psychology.biases", "function": "detect_overconfidence_markers"},
+  {"name": "detect_sycophancy_markers", "category": "biases", "time": "O(n)", "space": "O(1)", "module": "psychology.biases", "function": "detect_sycophancy_markers"},
+  {"name": "bias_mitigation_prompt", "category": "biases", "time": "O(1)", "space": "O(1)", "module": "psychology.biases", "function": "bias_mitigation_prompt"},
+  {"name": "loss_aversion_frame", "category": "framing", "time": "O(1)", "space": "O(1)", "module": "psychology.framing", "function": "loss_aversion_frame"},
+  {"name": "gain_frame", "category": "framing", "time": "O(1)", "space": "O(1)", "module": "psychology.framing", "function": "gain_frame"},
+  {"name": "neutral_frame", "category": "framing", "time": "O(1)", "space": "O(1)", "module": "psychology.framing", "function": "neutral_frame"},
+  {"name": "cialdini_principle_score", "category": "persuasion", "time": "O(n)", "space": "O(1)", "module": "psychology.persuasion", "function": "cialdini_principle_score"},
+  {"name": "ethical_persuasion_check", "category": "persuasion", "time": "O(n)", "space": "O(1)", "module": "psychology.persuasion", "function": "ethical_persuasion_check"},
+  {"name": "sdt_tone_score", "category": "motivation", "time": "O(n)", "space": "O(1)", "module": "psychology.motivation", "function": "sdt_tone_score"},
+  {"name": "agent_trust_score", "category": "trust", "time": "O(n)", "space": "O(1)", "module": "psychology.trust", "function": "agent_trust_score"},
+  {"name": "transparency_checklist", "category": "trust", "time": "O(n)", "space": "O(1)", "module": "psychology.trust", "function": "transparency_checklist"},
+  {"name": "default_option_label", "category": "nudges", "time": "O(1)", "space": "O(1)", "module": "psychology.nudges", "function": "default_option_label"},
+  {"name": "readability_score", "category": "cognitive_load", "time": "O(n)", "space": "O(1)", "module": "psychology.cognitive_load", "function": "readability_score"},
+  {"name": "progressive_disclosure_plan", "category": "cognitive_load", "time": "O(n)", "space": "O(n)", "module": "psychology.cognitive_load", "function": "progressive_disclosure_plan"}
+]

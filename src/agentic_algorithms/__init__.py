@@ -15,9 +15,11 @@ from agentic_algorithms.domains import (
 from agentic_algorithms.eval import EvalCase, EvalHarness, EvalResult, EvalSuite
 from agentic_algorithms.human import ApprovalDecision, ApprovalRequest, ToolApprovalHook
 from agentic_algorithms.llm import AnthropicProvider, MockProvider, OpenAIProvider
+from agentic_algorithms.llm_helpers import chain_of_thought_wrap, estimate_tokens
 from agentic_algorithms.loops import PlanExecuteLoop, ReActLoop
 from agentic_algorithms.memory import LongTermMemory, MemoryStore, ShortTermMemory
 from agentic_algorithms.multi import FanOut, Judge, Orchestrator
+from agentic_algorithms.psychology import agent_trust_score, bias_mitigation_prompt
 from agentic_algorithms.tools import Tool, ToolRegistry, tool
 from agentic_algorithms.types import (
     AgentResult,
@@ -61,8 +63,12 @@ __all__ = [
     "ToolRegistry",
     "ToolResult",
     "aeo_page_score",
+    "agent_trust_score",
     "atp_available",
+    "bias_mitigation_prompt",
     "bm25_score",
+    "chain_of_thought_wrap",
+    "estimate_tokens",
     "haversine_km",
     "newsvendor_quantity",
     "post_journal_entry",
