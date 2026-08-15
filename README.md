@@ -13,6 +13,17 @@ Python 3.12+. **Primary focus: give LLMs every helper they need**, plus psycholo
 
 Complements [first-principles](https://github.com/anishfyi/first-principles): theory and citations there, runnable code here.
 
+## Algorithm Atlas
+
+An interactive web UI for browsing all 198 algorithms: search, track and category filters, complexity at a glance, and hash deep links to every entry. Built from the machine-readable catalogs and deployed to GitHub Pages via `.github/workflows/pages.yml`.
+
+```bash
+python scripts/build_algorithm_catalog.py  # merges catalogs/*.json into web/data/algorithms.json
+python -m http.server -d web 8000          # open http://localhost:8000
+```
+
+The build script is dependency-free (stdlib only) and fails if the merged total drifts from 198.
+
 ## Install
 
 ```bash

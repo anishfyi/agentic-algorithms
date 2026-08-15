@@ -1,0 +1,11 @@
+[
+  {"name": "verify_webhook_hmac", "category": "shopify_webhooks", "time": "O(n)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "verify_webhook_hmac"},
+  {"name": "parse_shopify_gid", "category": "shopify_webhooks", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "parse_shopify_gid"},
+  {"name": "merge_cart_lines", "category": "shopify_cart", "time": "O(n)", "space": "O(n)", "module": "domains.shopify_commerce", "function": "merge_cart_lines"},
+  {"name": "inventory_available", "category": "shopify_inventory", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "inventory_available"},
+  {"name": "shopify_transaction_fee", "category": "shopify_payments", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "shopify_transaction_fee"},
+  {"name": "normalize_metafield_key", "category": "shopify_data", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "normalize_metafield_key"},
+  {"name": "rate_limit_backoff_ms", "category": "shopify_api", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "rate_limit_backoff_ms"},
+  {"name": "storefront_product_url", "category": "shopify_storefront", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "storefront_product_url"},
+  {"name": "order_tags_from_risk", "category": "shopify_orders", "time": "O(1)", "space": "O(1)", "module": "domains.shopify_commerce", "function": "order_tags_from_risk"}
+]

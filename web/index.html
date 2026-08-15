@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algorithm Atlas · agentic-algorithms</title>
+  <meta name="description" content="An interactive atlas of 198 algorithms for agentic systems: DSA, domain verticals, LLM helpers, and psychology engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#/">
+      <span class="brand-mark">◆</span>
+      <span>Algorithm <strong>Atlas</strong></span>
+    </a>
+    <a class="github-link" href="https://github.com/anishfyi/agentic-algorithms" target="_blank" rel="noopener">GitHub ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">agentic-algorithms</p>
+      <h1>Every algorithm your agents need,<br /><span class="accent-text">mapped in one atlas.</span></h1>
+      <p class="hero-sub">
+        <span id="hero-count">198</span> optimal implementations across DSA, domain verticals,
+        LLM helpers, psychology engineering, and Shopify commerce docs. Search it, filter it, deep-link it.
+      </p>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+        </svg>
+        <input id="search" type="search" placeholder="Search algorithms, modules, categories…" autocomplete="off" spellcheck="false" />
+        <kbd>/</kbd>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Filters">
+      <div class="track-filters" id="track-filters" role="group" aria-label="Track filters"></div>
+      <div class="category-chips" id="category-chips" role="group" aria-label="Category filters"></div>
+    </section>
+
+    <p class="result-count" id="result-count" role="status"></p>
+
+    <section class="grid" id="grid" aria-label="Algorithms"></section>
+
+    <p class="empty-state" id="empty-state" hidden>
+      Nothing matches. Try a different search or clear the filters.
+    </p>
+  </main>
+
+  <div class="panel-backdrop" id="panel-backdrop" hidden></div>
+  <aside class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
+    <button class="panel-close" id="panel-close" aria-label="Close detail panel">✕</button>
+    <p class="panel-track" id="panel-track"></p>
+    <h2 id="panel-title"></h2>
+    <p class="panel-category" id="panel-category"></p>
+    <p class="panel-description" id="panel-description"></p>
+    <div class="panel-viz-wrap">
+      <span class="section-label">Visualizer</span>
+      <canvas id="panel-viz" class="panel-viz" width="640" height="180" aria-label="Algorithm visualization"></canvas>
+    </div>
+    <div class="panel-complexity">
+      <div class="complexity-card">
+        <span class="complexity-label">Time</span>
+        <code id="panel-time"></code>
+      </div>
+      <div class="complexity-card">
+        <span class="complexity-label">Space</span>
+        <code id="panel-space"></code>
+      </div>
+    </div>
+    <div class="panel-source">
+      <div class="section-head">
+        <span class="section-label">Source</span>
+        <button class="copy-btn" id="copy-source" type="button">Copy</button>
+      </div>
+      <pre class="code-block"><code id="panel-source"></code></pre>
+    </div>
+    <div class="panel-usage">
+      <span class="usage-label">Import</span>
+      <pre><code id="panel-import"></code></pre>
+      <button class="copy-btn" id="copy-import">Copy</button>
+    </div>
+    <div class="panel-citation hidden" id="panel-citation-wrap">
+      <span class="section-label">Shopify citation</span>
+      <p class="citation-line"><strong>URL:</strong> <a id="panel-cite-url" href="#" target="_blank" rel="noopener"></a></p>
+      <p class="citation-line"><strong>Element:</strong> <code id="panel-cite-element"></code></p>
+      <p class="citation-line"><strong>Selector:</strong> <code id="panel-cite-selector"></code></p>
+    </div>
+    <a class="panel-permalink" id="panel-permalink" href="#">Permalink</a>
+  </aside>
+
+  <footer class="site-footer">
+    <p>Built from <code>catalogs/*.json</code> via <code>scripts/build_algorithm_catalog.py</code></p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
