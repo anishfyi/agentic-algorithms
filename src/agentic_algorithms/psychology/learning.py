@@ -10,7 +10,8 @@ def spaced_repetition_interval_days(repetition: int, ease: float = 2.5) -> int:
     """Next review interval via SM-2-lite. Time O(1)."""
     if repetition <= 0:
         return 1
-    return max(1, int(round((repetition**0.5) * ease)))
+    interval: int = round((repetition**0.5) * ease)
+    return max(1, interval)
 
 
 def micro_lesson_chunks(items: Sequence[str], *, chunk_size: int = 3) -> list[list[str]]:
@@ -50,7 +51,8 @@ def feynman_gap_score(explanation: str) -> float:
 
 def practice_problem_spacing(mastery: float) -> int:
     """Days between practice problems. Time O(1)."""
-    return max(1, int(round(7 * (1.0 - min(1.0, mastery)))))
+    days: int = round(7 * (1.0 - min(1.0, mastery)))
+    return max(1, days)
 
 
 def mastery_threshold_check(correct: int, attempts: int, *, threshold: float = 0.8) -> bool:
