@@ -104,13 +104,6 @@ from agentic_algorithms.dsa.math import (
     sieve_primes,
 )
 from agentic_algorithms.dsa.segments import SegmentTree
-from agentic_algorithms.dsa.stacks_queues import (
-    MinStack,
-    daily_temperatures,
-    evaluate_rpn,
-    largest_rectangle_histogram,
-    sliding_window_max,
-)
 from agentic_algorithms.dsa.sorting import (
     binary_search,
     counting_sort,
@@ -123,6 +116,13 @@ from agentic_algorithms.dsa.sorting import (
     radix_sort,
     search_rotated_array,
     upper_bound,
+)
+from agentic_algorithms.dsa.stacks_queues import (
+    MinStack,
+    daily_temperatures,
+    evaluate_rpn,
+    largest_rectangle_histogram,
+    sliding_window_max,
 )
 from agentic_algorithms.dsa.strings import (
     edit_distance_levenshtein,

@@ -1,0 +1,274 @@
+[
+  {
+    "name": "validate_journal_entry",
+    "category": "accounting",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.accounting",
+    "function": "validate_journal_entry"
+  },
+  {
+    "name": "post_journal_entry",
+    "category": "accounting",
+    "time": "O(n)",
+    "space": "O(n)",
+    "module": "domains.accounting",
+    "function": "post_journal_entry"
+  },
+  {
+    "name": "reconcile_bank_transactions",
+    "category": "accounting",
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "module": "domains.accounting",
+    "function": "reconcile_bank_transactions"
+  },
+  {
+    "name": "benford_anomaly_score",
+    "category": "accounting",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.accounting",
+    "function": "benford_anomaly_score"
+  },
+  {
+    "name": "categorize_expense",
+    "category": "expense",
+    "time": "O(k)",
+    "space": "O(1)",
+    "module": "domains.expense",
+    "function": "categorize_expense"
+  },
+  {
+    "name": "detect_duplicate_expenses",
+    "category": "expense",
+    "time": "O(n^2)",
+    "space": "O(1)",
+    "module": "domains.expense",
+    "function": "detect_duplicate_expenses"
+  },
+  {
+    "name": "mileage_reimbursement",
+    "category": "expense",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.expense",
+    "function": "mileage_reimbursement"
+  },
+  {
+    "name": "policy_violation_score",
+    "category": "expense",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.expense",
+    "function": "policy_violation_score"
+  },
+  {
+    "name": "velocity_check",
+    "category": "fintech",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.fintech",
+    "function": "velocity_check"
+  },
+  {
+    "name": "payment_risk_score",
+    "category": "fintech",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.fintech",
+    "function": "payment_risk_score"
+  },
+  {
+    "name": "amortization_schedule",
+    "category": "fintech",
+    "time": "O(months)",
+    "space": "O(months)",
+    "module": "domains.fintech",
+    "function": "amortization_schedule"
+  },
+  {
+    "name": "luhn_check",
+    "category": "fintech",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.fintech",
+    "function": "luhn_check"
+  },
+  {
+    "name": "newsvendor_quantity",
+    "category": "supply_chain",
+    "time": "O(n log n)",
+    "space": "O(1)",
+    "module": "domains.supply_chain",
+    "function": "newsvendor_quantity"
+  },
+  {
+    "name": "safety_stock",
+    "category": "supply_chain",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.supply_chain",
+    "function": "safety_stock"
+  },
+  {
+    "name": "atp_available",
+    "category": "supply_chain",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.supply_chain",
+    "function": "atp_available"
+  },
+  {
+    "name": "allocate_inventory",
+    "category": "supply_chain",
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "module": "domains.supply_chain",
+    "function": "allocate_inventory"
+  },
+  {
+    "name": "vehicle_route_nearest_neighbor",
+    "category": "supply_chain",
+    "time": "O(n^2)",
+    "space": "O(n)",
+    "module": "domains.supply_chain",
+    "function": "vehicle_route_nearest_neighbor"
+  },
+  {
+    "name": "recall_at_k",
+    "category": "ecommerce",
+    "time": "O(k)",
+    "space": "O(1)",
+    "module": "domains.ecommerce",
+    "function": "recall_at_k"
+  },
+  {
+    "name": "ndcg_at_k",
+    "category": "ecommerce",
+    "time": "O(k)",
+    "space": "O(1)",
+    "module": "domains.ecommerce",
+    "function": "ndcg_at_k"
+  },
+  {
+    "name": "item_item_cf_scores",
+    "category": "ecommerce",
+    "time": "O(n)",
+    "space": "O(n)",
+    "module": "domains.ecommerce",
+    "function": "item_item_cf_scores"
+  },
+  {
+    "name": "thompson_sampling_select",
+    "category": "ecommerce",
+    "time": "O(a)",
+    "space": "O(1)",
+    "module": "domains.ecommerce",
+    "function": "thompson_sampling_select"
+  },
+  {
+    "name": "din_attention_weights",
+    "category": "ecommerce",
+    "time": "O(h*d)",
+    "space": "O(h)",
+    "module": "domains.ecommerce",
+    "function": "din_attention_weights"
+  },
+  {
+    "name": "bm25_score",
+    "category": "search",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.search",
+    "function": "bm25_score"
+  },
+  {
+    "name": "SearchIndex",
+    "category": "search",
+    "time": "O(q*postings)",
+    "space": "O(results)",
+    "module": "domains.search",
+    "function": "SearchIndex"
+  },
+  {
+    "name": "hybrid_search_rrf",
+    "category": "search",
+    "time": "O(ranks)",
+    "space": "O(docs)",
+    "module": "domains.search",
+    "function": "hybrid_search_rrf"
+  },
+  {
+    "name": "tf_idf_vectorize",
+    "category": "search",
+    "time": "O(n*len)",
+    "space": "O(vocab)",
+    "module": "domains.search",
+    "function": "tf_idf_vectorize"
+  },
+  {
+    "name": "haversine_km",
+    "category": "geo",
+    "time": "O(1)",
+    "space": "O(1)",
+    "module": "domains.geo",
+    "function": "haversine_km"
+  },
+  {
+    "name": "geohash_encode",
+    "category": "geo",
+    "time": "O(precision)",
+    "space": "O(precision)",
+    "module": "domains.geo",
+    "function": "geohash_encode"
+  },
+  {
+    "name": "point_in_polygon",
+    "category": "geo",
+    "time": "O(v)",
+    "space": "O(1)",
+    "module": "domains.geo",
+    "function": "point_in_polygon"
+  },
+  {
+    "name": "jurisdiction_rate_lookup",
+    "category": "geo",
+    "time": "O(j*v)",
+    "space": "O(1)",
+    "module": "domains.geo",
+    "function": "jurisdiction_rate_lookup"
+  },
+  {
+    "name": "nearest_facility",
+    "category": "geo",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.geo",
+    "function": "nearest_facility"
+  },
+  {
+    "name": "aeo_page_score",
+    "category": "aeo",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.aeo",
+    "function": "aeo_page_score"
+  },
+  {
+    "name": "schema_completeness_score",
+    "category": "aeo",
+    "time": "O(types)",
+    "space": "O(1)",
+    "module": "domains.aeo",
+    "function": "schema_completeness_score"
+  },
+  {
+    "name": "snippet_answerability_score",
+    "category": "aeo",
+    "time": "O(n)",
+    "space": "O(1)",
+    "module": "domains.aeo",
+    "function": "snippet_answerability_score"
+  }
+]

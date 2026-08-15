@@ -7,6 +7,7 @@ Python 3.12+. Two libraries in one package:
 
 1. **Agent runtime** (`Agent`, ReAct, plan-execute, multi-agent, memory, eval, approval hooks)
 2. **DSA catalog** (`agentic_algorithms.dsa`) with **134+ optimal algorithms** indexed in `catalogs/algorithms.json`
+3. **Domain algorithms** (`agentic_algorithms.domains`) for **supply chain, fintech, accounting, expense, e-commerce, search, GEO, and AEO** in `catalogs/domain_algorithms.json`
 
 Complements [first-principles](https://github.com/anishfyi/first-principles): theory and citations there, runnable code here.
 
@@ -62,6 +63,37 @@ print(kmp_search("ababcabc", "abc"))        # [2, 5]
 | **stacks_queues** | monotonic stack, sliding window max, RPN |
 
 Full index: [`catalogs/algorithms.json`](catalogs/algorithms.json) (machine-readable, 134 entries).
+
+## Domain algorithms (supply chain, fintech, accounting, expense, commerce, search, GEO, AEO)
+
+```python
+from agentic_algorithms.domains import (
+    validate_journal_entry,
+    newsvendor_quantity,
+    atp_available,
+    categorize_expense,
+    payment_risk_score,
+    recall_at_k,
+    thompson_sampling_select,
+    SearchIndex,
+    haversine_km,
+    jurisdiction_rate_lookup,
+    aeo_page_score,
+)
+```
+
+| Domain | Algorithms |
+|--------|------------|
+| **accounting** | double-entry validation, posting, bank reconciliation, Benford anomaly |
+| **expense** | categorization, duplicate detection, mileage, policy scoring |
+| **fintech** | velocity limits, AML structuring, payment risk, amortization, Luhn |
+| **supply_chain** | newsvendor, safety stock, EOQ, ATP, allocation, MRP, vehicle routing |
+| **ecommerce** | recall/NDCG, item-item CF, Wide&Deep logit, DIN attention, bandits |
+| **search** | BM25 index, TF-IDF, hybrid RRF fusion, faceted filter |
+| **geo** | haversine, geohash, point-in-polygon, jurisdiction lookup, nearest facility |
+| **aeo** | schema completeness, FAQ structure, citation density, snippet answerability, EEAT |
+
+Domain index: [`catalogs/domain_algorithms.json`](catalogs/domain_algorithms.json) (34 entries).
 
 ## Agent patterns
 
