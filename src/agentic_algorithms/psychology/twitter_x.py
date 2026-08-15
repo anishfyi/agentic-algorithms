@@ -42,9 +42,9 @@ def thread_opener_variants(claim: str, *, count: int = 3) -> list[str]:
 def quote_tweet_angle(original_summary: str, *, stance: str = "add_value") -> str:
     """Suggest quote-tweet framing angle. Time O(1)."""
     angles = {
-        "add_value": f"Adding context: {original_summary} — here is the tactical takeaway.",
+        "add_value": f"Adding context: {original_summary} ,  here is the tactical takeaway.",
         "respectful_disagree": f"Counterpoint on '{original_summary}': nuance matters because...",
-        "amplify": f"This is underrated. {original_summary} — more people should see this.",
+        "amplify": f"This is underrated. {original_summary} ,  more people should see this.",
         "story": f"This matches what I saw building in public: {original_summary}",
     }
     return angles.get(stance, angles["add_value"])
@@ -80,20 +80,20 @@ def x_engagement_score(text: str) -> dict[str, float]:
 def fomo_tweet_frame(offer: str, deadline: str, *, ethical: bool = True) -> str:
     """Ethical FOMO frame for time-bound offers on X. Time O(1)."""
     if ethical:
-        return f"{offer} — closes {deadline}. No fake scarcity; link in bio if useful."
+        return f"{offer} ,  closes {deadline}. No fake scarcity; link in bio if useful."
     return f"LAST CHANCE {offer}!!!"
 
 
 def social_proof_tweet_line(metric: str, *, qualifier: str = "founders") -> str:
     """Social proof line for X without fabricated stats. Time O(1)."""
-    return f"Used by {qualifier} who {metric} — sharing what we learned publicly."
+    return f"Used by {qualifier} who {metric} ,  sharing what we learned publicly."
 
 
 def thread_cta_placement(tweet_count: int, cta: str) -> dict[int, str]:
     """Place CTAs across thread tweets. Time O(n)."""
     if tweet_count < 1:
         return {}
-    positions = {1: "Hook only — no CTA yet."}
+    positions = {1: "Hook only ,  no CTA yet."}
     if tweet_count >= 3:
         positions[max(2, tweet_count // 2)] = f"Mid-thread value reminder. Soft CTA: {cta}"
     positions[tweet_count] = f"Final tweet CTA: {cta}"

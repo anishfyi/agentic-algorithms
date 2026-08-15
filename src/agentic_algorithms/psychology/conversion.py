@@ -53,7 +53,7 @@ def form_field_reduction_plan(fields: Sequence[str], *, max_initial: int = 3) ->
 
 def micro_commitment_step(small_action: str, benefit: str) -> str:
     """Micro-commitment step before main CTA. Time O(1)."""
-    return f"First, {small_action} — takes 30 seconds and {benefit}."
+    return f"First, {small_action} ,  takes 30 seconds and {benefit}."
 
 
 def checkout_trust_badges(guarantee: str) -> list[str]:

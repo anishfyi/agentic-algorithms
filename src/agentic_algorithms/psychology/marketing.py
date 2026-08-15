@@ -26,7 +26,9 @@ def positioning_statement(category: str, audience: str, benefit: str, proof: str
 
 def competitor_diff_line(competitor: str, wedge: str) -> str:
     """Ethical competitor differentiation line. Time O(1)."""
-    return f"Compared to {competitor}, we optimize for {wedge} — best when that is your bottleneck."
+    return (
+        f"Compared to {competitor}, we optimize for {wedge} ,  best when that is your bottleneck."
+    )
 
 
 def persona_pain_hook(persona: str, pain: str) -> str:
@@ -51,8 +53,8 @@ def channel_message_fit(message: str, channel: str) -> float:
 
 def launch_sequence_plan(beat: str, channels: Sequence[str]) -> list[str]:
     """Simple launch email/post sequence. Time O(n)."""
-    return [f"{ch}: {beat} — teaser" for ch in channels] + [
-        f"{ch}: {beat} — launch" for ch in channels
+    return [f"{ch}: {beat} ,  teaser" for ch in channels] + [
+        f"{ch}: {beat} ,  launch" for ch in channels
     ]
 
 

@@ -13,7 +13,7 @@ def shareability_score(text: str) -> float:
 
 def referral_incentive_frame(give: str, get: str) -> str:
     """Referral incentive frame. Time O(1)."""
-    return f"Give {give}, get {get} — both sides win."
+    return f"Give {give}, get {get} ,  both sides win."
 
 
 def network_effect_pitch(audience: str, benefit: str) -> str:

@@ -7,7 +7,7 @@ import re
 
 def cold_dm_opener(trigger: str, relevance: str) -> str:
     """Cold DM opener with relevance. Time O(1)."""
-    return f"Noticed {trigger}. We help with {relevance} — worth a 2-line overview?"
+    return f"Noticed {trigger}. We help with {relevance} ,  worth a 2-line overview?"
 
 
 def warm_dm_followup(interaction: str, offer: str) -> str:
@@ -35,9 +35,9 @@ def dm_spam_risk_score(message: str) -> float:
 
 def conversation_to_call_bridge(topic: str) -> str:
     """Bridge DM thread to call. Time O(1)."""
-    return f"Happy to go deeper on {topic} — 15 min next week?"
+    return f"Happy to go deeper on {topic} ,  15 min next week?"
 
 
 def dm_opt_out_respect() -> str:
     """Respectful DM opt-out reply. Time O(1)."""
-    return "Thanks for letting me know — won't follow up. Door's open if timing changes."
+    return "Thanks for letting me know ,  won't follow up. Door's open if timing changes."

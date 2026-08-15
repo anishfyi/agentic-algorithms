@@ -5,11 +5,11 @@ classic data structures and algorithms with optimal complexity.
 
 Python 3.12+. **Primary focus: give LLMs every helper they need**, plus psychology engineering for trustworthy agent UX. Also includes agent runtime, DSA, and domain verticals.
 
-1. **LLM helpers** (`agentic_algorithms.llm_helpers`) — prompts, context budgeting, JSON parsing, RAG packing, routing, reflexion/self-consistency (`catalogs/llm_algorithms.json`)
-2. **Psychology engineering** (`agentic_algorithms.psychology`) — biases, framing, persuasion ethics, trust, nudges, cognitive load (`catalogs/psychology_algorithms.json`)
+1. **LLM helpers** (`agentic_algorithms.llm_helpers`): prompts, context budgeting, JSON parsing, RAG packing, routing, reflexion/self-consistency (`catalogs/llm_algorithms.json`)
+2. **Psychology engineering** (`agentic_algorithms.psychology`): biases, framing, persuasion ethics, trust, nudges, cognitive load (`catalogs/psychology_algorithms.json`)
 3. **Agent runtime** (`Agent`, ReAct, plan-execute, multi-agent, memory, eval, approval hooks)
-4. **DSA catalog** (`agentic_algorithms.dsa`) — 134+ optimal algorithms (`catalogs/algorithms.json`)
-5. **Domain algorithms** (`agentic_algorithms.domains`) — supply chain, fintech, accounting, expense, commerce, search, GEO, AEO (`catalogs/domain_algorithms.json`)
+4. **DSA catalog** (`agentic_algorithms.dsa`): 134+ optimal algorithms (`catalogs/algorithms.json`)
+5. **Domain algorithms** (`agentic_algorithms.domains`): supply chain, fintech, accounting, expense, commerce, search, GEO, AEO (`catalogs/domain_algorithms.json`)
 
 Complements [first-principles](https://github.com/anishfyi/first-principles): theory and citations there, runnable code here.
 

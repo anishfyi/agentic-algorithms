@@ -14,7 +14,7 @@ def churn_risk_score(days_inactive: int, support_tickets: int, nps: int | None) 
 
 def win_back_subject_line(feature: str) -> str:
     """Win-back email subject line. Time O(1)."""
-    return f"We saved your spot — new {feature} you asked for"
+    return f"We saved your spot ,  new {feature} you asked for"
 
 
 def habit_loop_design(cue: str, routine: str, reward: str) -> str:
