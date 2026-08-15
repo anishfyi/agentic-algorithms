@@ -3,6 +3,16 @@
 "use strict";
 
 import { destroyVisualizer, renderVisualizer, resizeVisualizer } from "./visualizers.js";
+import {
+  animateCards,
+  animateControls,
+  animateHero,
+  animatePanelClose,
+  animatePanelOpen,
+  bindCardHover,
+  markMotionReady,
+  pulseResultCount,
+} from "./motion-ui.js";
 
 const TRACK_LABELS = {
   dsa: "DSA",
@@ -181,7 +191,7 @@ function renderGrid() {
   els.grid.innerHTML = "";
   els.grid.classList.toggle("grid--shopify", state.track === "shopify_commerce");
 
-  visible.forEach((item, i) => {
+  visible.forEach((item) => {
     const card = document.createElement("button");
     const isDoc = item.kind === "doc";
     const isShopifyAlgo = item.track === "shopify_commerce" && !isDoc;
@@ -190,7 +200,6 @@ function renderGrid() {
       (isDoc ? " card-kind-doc" : "") +
       (isShopifyAlgo ? " card--shopify-algo" : "") +
       (isDoc && item.track === "shopify_commerce" ? " card--shopify-doc" : "");
-    card.style.animationDelay = `${Math.min(i, 24) * 22}ms`;
 
     const badgeLabel = isDoc
       ? "Docs"
@@ -233,8 +242,12 @@ function renderGrid() {
 
     card.innerHTML = body;
     card.addEventListener("click", () => openPanel(item, true));
+    bindCardHover(card);
     els.grid.appendChild(card);
   });
+
+  animateCards([...els.grid.querySelectorAll(".card")]);
+  pulseResultCount(els.resultCount);
 }
 
 function render() {
@@ -305,6 +318,7 @@ function openPanel(item, pushHash) {
   els.panelPermalink.href = `#/a/${item.id}`;
   els.backdrop.hidden = false;
   els.panel.hidden = false;
+  animatePanelOpen(els.backdrop, els.panel);
   document.body.style.overflow = "hidden";
   els.copyImport.classList.remove("copied");
   els.copyImport.textContent = "Copy";
@@ -318,12 +332,13 @@ function openPanel(item, pushHash) {
   els.panelClose.focus();
 }
 
-function closePanel(pushHash = true) {
+async function closePanel(pushHash = true) {
   if (els.panel.hidden) return;
   if (state.openAlgoId) {
     destroyVisualizer(state.openAlgoId);
     state.openAlgoId = null;
   }
+  await animatePanelClose(els.backdrop, els.panel);
   els.backdrop.hidden = true;
   els.panel.hidden = true;
   document.body.style.overflow = "";
@@ -397,7 +412,15 @@ async function init() {
     const algoData = await algoRes.json();
     state.algorithms = algoData.algorithms.map((a) => ({ ...a, kind: "algorithm" }));
     els.heroCount.textContent = state.algorithms.length + "+";
+    markMotionReady();
     render();
+    animateHero({
+      eyebrow: document.getElementById("hero-eyebrow"),
+      title: document.getElementById("hero-title"),
+      sub: document.getElementById("hero-sub"),
+      search: document.querySelector(".search-wrap"),
+    });
+    animateControls(document.getElementById("controls"));
     syncPanelToHash();
     // Warm-load Shopify docs in the background after algorithms render.
     loadShopifyDocs();

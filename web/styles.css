@@ -755,6 +755,41 @@ main {
 
 /* ---------- Animations ---------- */
 
+html.motion-ui .hero,
+html.motion-ui .controls,
+html.motion-ui .grid {
+  animation: none;
+}
+
+html.motion-ui .card {
+  animation: none;
+}
+
+html.motion-ui .card:hover {
+  transform: none;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.6);
+}
+
+html.motion-ui .panel-backdrop,
+html.motion-ui .detail-panel {
+  animation: none;
+}
+
+.footer-credit {
+  margin-top: 8px;
+  font-size: 0.75rem;
+}
+
+.footer-credit a {
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-faint);
+}
+
+.footer-credit a:hover {
+  color: var(--text);
+}
+
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }

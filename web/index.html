@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Algorithm Atlas · agentic-algorithms</title>
-  <meta name="description" content="An interactive atlas of 198 algorithms for agentic systems: DSA, domain verticals, LLM helpers, and psychology engineering." />
+  <meta name="description" content="An interactive atlas of 331+ algorithms for agentic systems: DSA, domain verticals, LLM helpers, psychology engineering, and Shopify commerce." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -21,9 +21,9 @@
 
   <main>
     <section class="hero">
-      <p class="hero-eyebrow">agentic-algorithms</p>
-      <h1>Every algorithm your agents need,<br /><span class="accent-text">mapped in one atlas.</span></h1>
-      <p class="hero-sub">
+      <p class="hero-eyebrow" id="hero-eyebrow">agentic-algorithms</p>
+      <h1 id="hero-title">Every algorithm your agents need,<br /><span class="accent-text">mapped in one atlas.</span></h1>
+      <p class="hero-sub" id="hero-sub">
         <span id="hero-count">198</span> optimal implementations across DSA, domain verticals,
         LLM helpers, psychology engineering, and Shopify commerce docs. Search it, filter it, deep-link it.
       </p>
@@ -36,7 +36,7 @@
       </div>
     </section>
 
-    <section class="controls" aria-label="Filters">
+    <section class="controls" id="controls" aria-label="Filters">
       <div class="track-filters" id="track-filters" role="group" aria-label="Track filters"></div>
       <div class="category-chips" id="category-chips" role="group" aria-label="Category filters"></div>
     </section>
@@ -108,6 +108,7 @@
 
   <footer class="site-footer">
     <p>Built from <code>catalogs/*.json</code> via <code>scripts/build_algorithm_catalog.py</code></p>
+    <p class="footer-credit">Animations by <a href="https://motion.dev" target="_blank" rel="noopener">Motion</a></p>
   </footer>
 
   <script src="app.js" type="module"></script>
