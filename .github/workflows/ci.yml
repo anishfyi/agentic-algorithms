@@ -1,0 +1,31 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: uv pip install --system -e ".[dev]"
+      - name: Ruff
+        run: ruff check src tests examples
+      - name: Ruff format
+        run: ruff format --check src tests examples
+      - name: Mypy
+        run: mypy
+      - name: Pytest
+        run: pytest --cov=agentic_algorithms --cov-report=term-missing
+      - name: Em-dash ban
+        run: |
+          set +e
+          grep -rInE $'\xe2\x80\x94|\xe2\x80\x93' src tests examples README.md --exclude-dir=__pycache__
+          rc=$?
+          set -e
+          [ "$rc" -eq 1 ]
