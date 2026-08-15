@@ -7,9 +7,7 @@ import hashlib
 import hmac
 import math
 import re
-import time
 from typing import Any
-
 
 _GID_RE = re.compile(r"^gid://shopify/([A-Za-z]+)/(\d+)$")
 
@@ -69,7 +67,7 @@ def rate_limit_backoff_ms(attempt: int, *, base_ms: int = 500, cap_ms: int = 30_
         attempt = 1
     delay = min(cap_ms, base_ms * (2 ** (attempt - 1)))
     jitter = int(delay * 0.1)
-    return delay + (attempt % (jitter + 1))
+    return int(delay + (attempt % (jitter + 1)))
 
 
 def storefront_product_url(shop_domain: str, handle: str) -> str:

@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-import math
 import re
-from typing import Sequence
-
+from collections.abc import Sequence
 
 _HOOK_PATTERNS = [
     (r"^\d+\s", 0.15),
@@ -14,6 +12,7 @@ _HOOK_PATTERNS = [
     (r"\b(i |we |my )", 0.05),
     (r"[!:]", 0.05),
 ]
+
 
 def hook_strength_score(text: str) -> float:
     """Score X post hook strength for scroll-stop. Time O(n)."""
@@ -25,6 +24,7 @@ def hook_strength_score(text: str) -> float:
         if re.search(pattern, head, re.I):
             score += weight
     return min(1.0, score)
+
 
 def thread_opener_variants(claim: str, *, count: int = 3) -> list[str]:
     """Generate thread opener variants from a core claim. Time O(n)."""
@@ -38,6 +38,7 @@ def thread_opener_variants(claim: str, *, count: int = 3) -> list[str]:
     ]
     return templates[: max(1, min(count, len(templates)))]
 
+
 def quote_tweet_angle(original_summary: str, *, stance: str = "add_value") -> str:
     """Suggest quote-tweet framing angle. Time O(1)."""
     angles = {
@@ -48,8 +49,10 @@ def quote_tweet_angle(original_summary: str, *, stance: str = "add_value") -> st
     }
     return angles.get(stance, angles["add_value"])
 
+
 _BAIT = [r"^\s*(this|so true|facts|100%)\s*!?$", r"^\s*following\s*$", r"^\s*great post\s*!?$"]
 _VALUE = [r"\bbecause\b", r"\btry\b", r"\bexample\b", r"\?"]
+
 
 def reply_value_score(reply: str) -> float:
     """Score whether a reply adds value vs engagement bait. Time O(n)."""
@@ -62,6 +65,7 @@ def reply_value_score(reply: str) -> float:
     score += 0.15 * sum(1 for p in _VALUE if re.search(p, text, re.I))
     return min(1.0, score)
 
+
 def x_engagement_score(text: str) -> dict[str, float]:
     """Estimate algorithm-friendly engagement signals in copy. Time O(n)."""
     t = text.lower()
@@ -72,15 +76,18 @@ def x_engagement_score(text: str) -> dict[str, float]:
         "share_hook": 1.0 if re.search(r"\b(rt|repost|share)\b", t) else 0.1,
     }
 
+
 def fomo_tweet_frame(offer: str, deadline: str, *, ethical: bool = True) -> str:
     """Ethical FOMO frame for time-bound offers on X. Time O(1)."""
     if ethical:
         return f"{offer} — closes {deadline}. No fake scarcity; link in bio if useful."
     return f"LAST CHANCE {offer}!!!"
 
+
 def social_proof_tweet_line(metric: str, *, qualifier: str = "founders") -> str:
     """Social proof line for X without fabricated stats. Time O(1)."""
     return f"Used by {qualifier} who {metric} — sharing what we learned publicly."
+
 
 def thread_cta_placement(tweet_count: int, cta: str) -> dict[int, str]:
     """Place CTAs across thread tweets. Time O(n)."""
@@ -92,15 +99,22 @@ def thread_cta_placement(tweet_count: int, cta: str) -> dict[int, str]:
     positions[tweet_count] = f"Final tweet CTA: {cta}"
     return positions
 
+
 def bio_link_cta(action: str, outcome: str) -> str:
     """Bio link CTA optimized for X traffic. Time O(1)."""
     return f"↓ {action} → {outcome}"
 
+
 def dm_permission_opener(context: str, ask: str) -> str:
     """Permission-based cold DM opener for X. Time O(1)."""
-    return f"Saw your post on {context}. Open to a quick question about {ask}? Happy to share notes either way."
+    return (
+        f"Saw your post on {context}. Open to a quick question about {ask}? "
+        "Happy to share notes either way."
+    )
+
 
 _LOOP_SIGNALS = ["share", "tag", "invite", "refer", "remix", "template", "challenge"]
+
 
 def viral_loop_score(copy: str) -> float:
     """Score creator viral loop completeness. Time O(n)."""
@@ -108,11 +122,14 @@ def viral_loop_score(copy: str) -> float:
     hits = sum(1 for word in _LOOP_SIGNALS if word in t)
     return min(1.0, hits / 3.0)
 
+
 _BAIT = [r"comment \w+ below", r"like if you agree", r"follow for follow", r"drop a \W"]
+
 
 def engagement_bait_detector(text: str) -> list[str]:
     """Detect engagement bait patterns on X. Time O(n)."""
     return [p for p in _BAIT if re.search(p, text, re.I)]
+
 
 def creator_flywheel_stage(followers: int, engagement_rate: float) -> str:
     """Map creator flywheel stage from metrics. Time O(1)."""
@@ -122,13 +139,15 @@ def creator_flywheel_stage(followers: int, engagement_rate: float) -> str:
         return "audience_quality_fix"
     return "productize_attention"
 
+
 def thread_structure_outline(bullets: Sequence[str]) -> list[str]:
     """Outline thread structure from bullets. Time O(n)."""
     out = ["1/ Hook"]
     for i, b in enumerate(bullets, start=2):
         out.append(f"{i}/ {b}")
-    out.append(f"{len(bullets)+2}/ CTA + recap")
+    out.append(f"{len(bullets) + 2}/ CTA + recap")
     return out
+
 
 def tweet_readability_for_x(text: str) -> float:
     """Score tweet readability for X. Time O(n)."""
@@ -137,4 +156,3 @@ def tweet_readability_for_x(text: str) -> float:
         return 0.0
     avg_len = sum(len(w) for w in words) / len(words)
     return max(0.0, 1.0 - max(0, avg_len - 5) * 0.1)
-

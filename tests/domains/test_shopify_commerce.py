@@ -50,5 +50,8 @@ def test_inventory_and_fees() -> None:
 def test_helpers() -> None:
     assert normalize_metafield_key("Custom NS", "Color-Name") == "custom_ns.color_name"
     assert rate_limit_backoff_ms(3) >= 2000
-    assert storefront_product_url("demo.myshopify.com", "hoodie") == "https://demo.myshopify.com/products/hoodie"
+    assert (
+        storefront_product_url("demo.myshopify.com", "hoodie")
+        == "https://demo.myshopify.com/products/hoodie"
+    )
     assert order_tags_from_risk(0.9) == ["risk:high", "review-required"]

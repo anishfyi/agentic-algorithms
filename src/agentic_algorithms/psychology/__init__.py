@@ -10,7 +10,6 @@ from agentic_algorithms.psychology.ads_psychology import (
     retargeting_message_tier,
     scroll_stop_score,
 )
-
 from agentic_algorithms.psychology.b2b_selling import (
     economic_buyer_map,
     expansion_playbook_step,
@@ -19,18 +18,15 @@ from agentic_algorithms.psychology.b2b_selling import (
     procurement_objection_prep,
     security_review_brief,
 )
-
 from agentic_algorithms.psychology.biases import (
     bias_mitigation_prompt,
     detect_overconfidence_markers,
     detect_sycophancy_markers,
 )
-
 from agentic_algorithms.psychology.cognitive_load import (
     progressive_disclosure_plan,
     readability_score,
 )
-
 from agentic_algorithms.psychology.conversion import (
     checkout_trust_badges,
     cta_clarity_score,
@@ -41,7 +37,6 @@ from agentic_algorithms.psychology.conversion import (
     social_proof_placement,
     urgency_ethical_score,
 )
-
 from agentic_algorithms.psychology.copywriting import (
     active_voice_ratio,
     benefit_vs_feature_ratio,
@@ -51,7 +46,6 @@ from agentic_algorithms.psychology.copywriting import (
     rhythm_variation_score,
     specificity_score,
 )
-
 from agentic_algorithms.psychology.dm_outreach import (
     cold_dm_opener,
     conversation_to_call_bridge,
@@ -60,13 +54,11 @@ from agentic_algorithms.psychology.dm_outreach import (
     dm_spam_risk_score,
     warm_dm_followup,
 )
-
 from agentic_algorithms.psychology.framing import (
     gain_frame,
     loss_aversion_frame,
     neutral_frame,
 )
-
 from agentic_algorithms.psychology.learning import (
     elaboration_questions,
     feynman_gap_score,
@@ -80,7 +72,6 @@ from agentic_algorithms.psychology.learning import (
     skill_stacking_path,
     spaced_repetition_interval_days,
 )
-
 from agentic_algorithms.psychology.marketing import (
     brand_promise_check,
     brand_voice_consistency_score,
@@ -97,15 +88,12 @@ from agentic_algorithms.psychology.marketing import (
     positioning_statement,
     value_prop_one_liner,
 )
-
 from agentic_algorithms.psychology.motivation import (
     sdt_tone_score,
 )
-
 from agentic_algorithms.psychology.nudges import (
     default_option_label,
 )
-
 from agentic_algorithms.psychology.objection_handling import (
     authority_objection_response,
     competitor_objection_matrix,
@@ -113,7 +101,6 @@ from agentic_algorithms.psychology.objection_handling import (
     price_objection_reframe,
     timing_objection_response,
 )
-
 from agentic_algorithms.psychology.onboarding import (
     activation_milestone_map,
     aha_moment_checklist,
@@ -121,12 +108,10 @@ from agentic_algorithms.psychology.onboarding import (
     setup_wizard_steps,
     time_to_value_score,
 )
-
 from agentic_algorithms.psychology.persuasion import (
     cialdini_principle_score,
     ethical_persuasion_check,
 )
-
 from agentic_algorithms.psychology.pricing_psychology import (
     anchoring_tier_order,
     charm_price,
@@ -134,7 +119,6 @@ from agentic_algorithms.psychology.pricing_psychology import (
     payment_friction_score,
     price_framing_monthly_vs_annual,
 )
-
 from agentic_algorithms.psychology.retention import (
     churn_risk_score,
     expansion_upsell_timing,
@@ -142,7 +126,6 @@ from agentic_algorithms.psychology.retention import (
     renewal_reminder_frame,
     win_back_subject_line,
 )
-
 from agentic_algorithms.psychology.saas_growth import (
     freemium_limit_message,
     nrr_expansion_map,
@@ -151,7 +134,6 @@ from agentic_algorithms.psychology.saas_growth import (
     upgrade_trigger_event,
     usage_based_upsell_line,
 )
-
 from agentic_algorithms.psychology.sales import (
     champion_enablement_brief,
     closing_language_check,
@@ -164,7 +146,6 @@ from agentic_algorithms.psychology.sales import (
     pipeline_stage_score,
     spin_question_builder,
 )
-
 from agentic_algorithms.psychology.social_growth import (
     audience_warmth_score,
     community_reply_priority,
@@ -176,12 +157,10 @@ from agentic_algorithms.psychology.social_growth import (
     growth_loop_map,
     posting_cadence_plan,
 )
-
 from agentic_algorithms.psychology.trust import (
     agent_trust_score,
     transparency_checklist,
 )
-
 from agentic_algorithms.psychology.twitter_x import (
     bio_link_cta,
     creator_flywheel_stage,
@@ -199,7 +178,6 @@ from agentic_algorithms.psychology.twitter_x import (
     viral_loop_score,
     x_engagement_score,
 )
-
 from agentic_algorithms.psychology.virality import (
     k_factor_estimate,
     meme_template_fit,
